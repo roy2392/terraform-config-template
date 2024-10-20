@@ -6,6 +6,12 @@ variable "key_name" {
   type = string
 }
 
+
+
+variable "availability_zone" {
+  type = string
+}
+
 variable "aws_access_key" {}
 variable "aws_secret_key" {}
 
@@ -56,7 +62,7 @@ resource "aws_route_table" "prod-route-table" {
 resource "aws_subnet" "subnet-1" {
   vpc_id            = aws_vpc.prod-vpc.id
   cidr_block        = "10.0.1.0/24"
-  availability_zone = "us-east-1a"
+  availability_zone = var.availability_zone
 
   tags = {
     Name = "prod-subnet"
@@ -134,8 +140,8 @@ output "server_public_ip" {
 resource "aws_instance" "web-server-instance" {
   ami               = "ami-085925f297f89fce1"
   instance_type     = "t2.micro"
-  availability_zone = "us-east-1a"
-  key_name          = "terraform-key"
+  availability_zone = var.availability_zone
+  key_name          = var.key_name
 
   network_interface {
     device_index         = 0
