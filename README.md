@@ -46,7 +46,9 @@ The infrastructure includes:
         ```bash
         region = "us-east-1"
         key_name = "your-key-name"
-        availability_zone = "for example: us-east-1a"
+        availability_zone = "us-east-1a"
+        instance_type = "t2.micro"
+        ami = "ami-0c55b159cbfafe1f0"
         ```
 
 ## Usage
