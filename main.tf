@@ -6,7 +6,13 @@ variable "key_name" {
   type = string
 }
 
+variable "instance_type" {
+  type = string
+}
 
+variable "ami" {
+  type = string
+}
 
 variable "availability_zone" {
   type = string
@@ -138,8 +144,8 @@ output "server_public_ip" {
 # 9. Create Ubuntu server and install/enable apache2
 
 resource "aws_instance" "web-server-instance" {
-  ami               = "ami-085925f297f89fce1"
-  instance_type     = "t2.micro"
+  ami               = var.ami
+  instance_type     = var.instance_type
   availability_zone = var.availability_zone
   key_name          = var.key_name
 

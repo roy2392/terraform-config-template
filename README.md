@@ -46,6 +46,7 @@ The infrastructure includes:
         ```bash
         region = "us-east-1"
         key_name = "your-key-name"
+        availability_zone = "for example: us-east-1a"
         ```
 
 ## Usage
